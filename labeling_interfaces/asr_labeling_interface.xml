@@ -1,0 +1,14 @@
+<View>
+    <Header value="Speaker Labels:" />
+    <Labels name="labels" toName="audio">
+        <Label value="Pilot" />
+        <Label value="Controller" />
+        <Label value="Controller Change Briefing" />
+    </Labels>
+
+    <Audio name="audio" value="$audio" />
+
+    <Header value="Transcription:" />
+    <TextArea name="transcription" toName="audio" rows="2" editable="true" transcription="true" perRegion="true"
+        required="true" />
+</View>
