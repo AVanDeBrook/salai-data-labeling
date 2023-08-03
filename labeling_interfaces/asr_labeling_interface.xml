@@ -9,6 +9,5 @@
     <Audio name="audio" value="$audio" />
 
     <Header value="Transcription:" />
-    <TextArea name="transcription" toName="audio" rows="2" editable="true" transcription="true" perRegion="true"
-        required="true" />
+    <TextArea name="transcription" toName="audio" rows="2" editable="true" perRegion="true" required="true" />
 </View>

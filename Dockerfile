@@ -1,11 +1,13 @@
 FROM ubuntu:22.04
 SHELL [ "/bin/bash", "-c" ]
+EXPOSE 8080
 
 # image config
 RUN apt-get -yq update && apt-get -yq upgrade
 RUN apt-get -yq install python3 python3-pip
 RUN pip install -U pip
 RUN pip install label-studio
+RUN pip install -U label-studio
 RUN pip install -U --upgrade-strategy=eager django==3.2.20 redis numpy setuptools
 
 # label-studio config for serving local files through the web server
