@@ -31,9 +31,9 @@ We have created three ways to run the container with the required configurations
 ### Run using the script for your operating system (recommended)
 We have created a set of three custom scripts that you can run that will guarantee that the container runs with the correct options/configurations. They are platform specific, so please select the correct one for your operating system:
 
-* The **Windows** script can be [downloaded here]()
-* The **Mac** script can be [downloaded here]()
-* The **Linux** script can be [downloaded here]()
+* The **Windows** script can be [downloaded here](https://raw.githubusercontent.com/AVanDeBrook/salai-data-labeling/main/scripts/windows-run-container.bat) (**right-click** and **Save Link as...**)
+* The **Mac** script can be [downloaded here](https://raw.githubusercontent.com/AVanDeBrook/salai-data-labeling/main/scripts/mac-run-container.sh) (**right-click** and **Save Link as...**)
+* The **Linux** script can be [downloaded here](https://raw.githubusercontent.com/AVanDeBrook/salai-data-labeling/main/scripts/linux-run-container.sh) (**right-click** and **Save Link as...**)
 
 Create a folder for this project somewhere you can remember and find it again (e.g., your desktop or documents folder), download the script for your system, and save it to that folder.
 
