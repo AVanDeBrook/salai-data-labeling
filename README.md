@@ -16,6 +16,8 @@ There are a few terms (defined below) that are used frequently in this guide and
 * Download and install [Docker Desktop](https://www.docker.com/) for your machine. It is available on all platforms (including Apple Silicon Macs).
   * **On Windows**, under the **Configuration** step in the installer, make sure "Use WSL 2 instead of Hyper-V" is checked, if available.
 
+![](images/docker_desktop_install.png)
+
 ## Download the Docker Image
 Open Docker Desktop and click on the **search bar** at the top of the window. Type (or copy/paste) the following:
 ```
@@ -23,7 +25,11 @@ avandebrook/salai-data-labeling
 ```
 There should be one image listed with the **exact same name**. Select `latest` from the **Tag dropdown** menu. Then click **Pull**.
 
+![](images/docker_image_pull.png)
+
 This will download our customized image to your machine. It may take a little bit depending on the speed of your internet (the image is approximately 1.2 GB). Once it has finished downloading, you should see the image (under the **Images tab**) in Docker Desktop.
+
+*Note: Technically this step doesn't need to be done since the image will automatically be downloaded if the script executes correctly*
 
 ## Run the Container
 We have created three ways to run the container with the required configurations and options. They are ordered from least to most difficult here.
@@ -43,6 +49,8 @@ Create a folder for this project somewhere you can remember and find it again (e
 
 After running the script, **open Docker Desktop** and go to the **Containers tab**. There should be a **container** called `atc-transcriptions` with the **image** `avandebrook/salai-data-labeling` and the **status** "Running". There will also be two new folders `salai_data`, and within that folder `foia-data`.
 
+![](images/docker_running_containers.png)
+
 If the container is not running, try one of the other methods for running the container. If the folders aren't present, please create them (`salai_data/foia-data`). Otherwise, continue to the [Importing Data step](#importing-data).
 
 ### Run using Docker Desktop
@@ -58,7 +66,11 @@ Another window should pop up with an expandable menu called **Optional settings*
 * Under **Volumes**, in the **Container path** field, type: `/label-studio/data`
 * Click **Run** to start the container
 
+![](images/run_through_docker_desktop.png)
+
 Open the **Containers** tab. There should be a **container** called `atc-transcriptions` with the **image** `avandebrook/salai-data-labeling` and the **status** "Running".
+
+![](images/docker_running_containers.png)
 
 If the container is not running, try the last method for running the container. Otherwise, continue to the [Importing Data step](#importing-data).
 
@@ -91,14 +103,20 @@ If this method fails too, try reinstalling Docker Desktop or contact your manage
 ## Importing Data
 Download the data that has been allocated to you and move it to the `salai_data/foia_data` folder that was created within your project folder.
 
-Next, open Label Studio by typing `localhost:8080` in the **URL bar of your web browser** or clicking the **hyperlink** in **Docker Desktop** under the **port(s) section of the running container**. This will bring you to Label Studio's login/sign up page. Sign in to the default user using the following credentials:
+Next, open Label Studio by typing `localhost:8080` in the **URL bar of your web browser** or clicking the **hyperlink** in **Docker Desktop** under the **port(s) section of the running container**. This will bring you to Label Studio's login/sign-up page. Sign in to the default user using the following credentials:
 
 * Username: default_user@localhost
 * Password: salaiFOIAdata2023
 
 **We highly recommend you change the password for the default user after logging in for the first time.**
 
-Once logged in, there should be a project called "FOIA-Data" on your **Projects** dashboard. Click on the card to open the project, then click on **Settings** in the top-right corner, go to the **Cloud Storage** tab on the left, then click the **Add Source Storage** button.
+Once logged in, there should be a project called "FOIA-Data" on your **Projects** dashboard.
+
+![](images/label_studio_projects.png)
+
+Click on the card to open the project, then click on **Settings** in the top-right corner, go to the **Cloud Storage** tab on the left, then click the **Add Source Storage** button.
+
+![](images/label_studio_cloud_storage_settings.png)
 
 Now do the following to get Label Studio to detect the data you downloaded:
 
@@ -109,7 +127,11 @@ Now do the following to get Label Studio to detect the data you downloaded:
 * Check the **Treat every bucket object as a source file** option
 * Click **Add Storage**
 
+![](images/label_studio_local_storage_setup.png)
+
 There should now be a card under the **Cloud Storage** tab called "FOIA Data". It most likely says "0 tasks" and "Not synced yet" towards the bottom of the card. Click the **Sync Storage** button and both fields should update.
+
+![](images/label_studio_sync_storage.png)
 
 ## Exporting Data
 Once you have finished labeling your data and have submitted your annotations for each task/file. Do the following to export and upload your data:
@@ -120,6 +142,13 @@ Once you have finished labeling your data and have submitted your annotations fo
 * From the list of export formats, click **ASR Manifest** (towards the bottom)
 * Click the **Export** button. It may take a moment to export, depending on your computer.
 
+![](images/label_studio_annotations_export.png)
+
 Once the data has been exported, a ZIP file will be downloaded to your computer.
 
 [Steps to take before uploading to share drive...]
+
+## Technical Notes
+* The base OS image is fixed at Ubuntu 22.04
+* The project and database for label studio are created toward the end of the image creation script, which saves a ton of time when the user starts the image
+* If/when the Python version in the image is upgraded to 3.11+, it will have to be set up differently (pipx instead of pip)
