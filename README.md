@@ -45,7 +45,7 @@ Create a folder for this project somewhere you can remember and find it again (e
 
 * On **Windows**, you can double-click the script in the folder from File Explorer to run it. You can close the window at any point and it will continue running in Docker, in the background.
 * On **Mac**, [TODO]
-* On **Linux**, [TODO]
+* On **Linux**, right-click the whitespace in the folder and select **Open in Terminal**, then type `bash linux-run-container.sh` and press enter.
 
 After running the script, **open Docker Desktop** and go to the **Containers tab**. There should be a **container** called `atc-transcriptions` with the **image** `avandebrook/salai-data-labeling` and the **status** "Running". There will also be two new folders `salai_data`, and within that folder `foia-data`.
 
