@@ -1,9 +1,14 @@
 <View>
-    <Header value="Speaker Labels:" />
-    <Labels name="labels" toName="audio">
+    <Header value="Speaker Categories:" />
+    <Labels name="speaker_labels" toName="audio">
         <Label value="Pilot" />
         <Label value="Controller" />
+    </Labels>
+
+    <Header value="Meta Tags:" />
+    <Labels name="meta_labels" toName="audio">
         <Label value="Controller Change Briefing" />
+        <Label value="One-way Communication (no readback)" />
     </Labels>
 
     <Audio name="audio" value="$audio" />
